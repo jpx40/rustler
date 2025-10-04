@@ -221,7 +221,7 @@ defmodule Mix.Tasks.Rustler.New do
     cond do
       # Erlang 27
       Code.ensure_loaded?(:json) and Kernel.function_exported?(:json, :decode, 1) ->
-        data |> :json.decode() |> versions_from_parsed_json()
+        data |> :elixir_json.decode() |> versions_from_parsed_json()
 
       Code.ensure_loaded?(Jason) ->
         data |> Jason.decode!() |> versions_from_parsed_json()
